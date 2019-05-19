@@ -4,7 +4,9 @@ import './GridContainer.css'
 
  const Grid = () =>( 
 
-    <div className="grid-container"></div>
+    <div className="grid-container">
+    
+    </div>
     
 )
 

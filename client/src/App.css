@@ -1,8 +1,9 @@
 .App {
   display: block;
-
 }
-
+.App>img{
+  margin: 20px 10px;
+}
 .App-header {
   display: flex;
   flex-direction: column;
