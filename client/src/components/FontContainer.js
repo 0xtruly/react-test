@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const FontContainerStyle = styled.div`
         height: 200px;
-        background: #009688;
+        background: #1f2120;
         color: #fff3f3;
         border-radius: 5px;
         border: 1px solid;
@@ -11,10 +11,15 @@ const FontContainerStyle = styled.div`
         justify-content: space-evenly;
         text-align: center;
         margin: 0 20px;
-        width: 100%;
-    }
+        width: 300px;
+        div{
+            display: grid;
+            grid-template-rows: 35% 25% 40%;
+        }
+    
     .btn-round{
         width: 80px;
+        height: 25px;
         border-radius: 5px;
         background: #174e17;;
         color: #f2f2f2;
@@ -23,10 +28,16 @@ const FontContainerStyle = styled.div`
         margin-left: 1rem;
         cursor: pointer;
     }
-    .flex-container{
-        display: flex;
-        justify-content: space-evenly;
+    .grid-container{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 50px;
     }
+    .btn{
+        display: flex;
+        margin: 10px 0;
+    }
+   
 `
 
 const FontContainer = ({children}) =>(
