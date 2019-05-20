@@ -1,14 +1,9 @@
-import React from 'react';
-import './GridContainer.css'
-// import {link} from 'react-router-dom';
 
- const Grid = () =>( 
+import styled from 'styled-components';
 
-    <div className="grid-container">
-    
-    </div>
-    
-)
-
-
-export default Grid;
+export const Grid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+    place-items: center;
+`;

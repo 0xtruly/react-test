@@ -4,11 +4,12 @@ import axios from 'axios';
 import './App.css';
 import Header from './components/Header';
 // import Ads from './components/Ads';
-import Grid from './components/GridContainer'
+import {Grid} from './components/GridContainer'
 import FontContainer from './components/FontContainer'
 
 axios.defaults.baseURL = 'http://localhost:3000/api'
 const adsURL = `http://localhost:3000/ads/?r=${+ Math.floor(Math.random()*1000)}`;
+
 
 class App extends Component{
   state ={
@@ -31,7 +32,9 @@ class App extends Component{
       })
     });
   }
+ 
   render(){
+    
     const {ready, faces} = this.state;
     console.log(this.state)
     // console.log(faces)
@@ -45,9 +48,17 @@ class App extends Component{
           {faces.length ? '' : 'loading'}
           {ready=== 'loading' ? 'loading..' : ''}
           <Grid>
-            <FontContainer key={faces.id} image={faces.face}>
+          {faces.map(faces=>(
 
+            <FontContainer key={faces.id} className="container">
+              <h1 className="face" style={{fontSize:faces.size}}>{faces.face}</h1>
+              <div className="flex-container">
+                <h3>{faces.size}px</h3>
+                <h3 className="price">${faces.price/100}</h3>
+              </div>
+              <input type="button" className="btn-round" value="Buy"/>
             </FontContainer>
+          ))}
           </Grid>
         </div>    
     );
