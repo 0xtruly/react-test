@@ -8,7 +8,7 @@ import {Grid} from './components/GridContainer'
 import FontContainer from './components/FontContainer'
 
 axios.defaults.baseURL = 'http://localhost:3000/api'
-const adsURL = `http://localhost:3000/ads/?r=${+ Math.floor(Math.random()*1000)}`;
+
 
 
 class App extends Component{
@@ -19,7 +19,7 @@ class App extends Component{
     _limit: 20,
     totalpages: null,
     scrolling: false,
-    advert: null
+    advert: `http://localhost:3000/ads/?r=${+ Math.floor(Math.random()*1000)}`
   };
 
   componentWillMount(){
@@ -35,9 +35,10 @@ class App extends Component{
     const {scrolling, totalpages, _page} = this.state
     if (scrolling) return
     if (totalpages <= _page) return
-    const lastGrid = document.querySelector('.container > div:last-child')
+    const lastGrid = document.querySelector('FontContainer>div.Wrapper:last-child')
     const lastGridOffset = lastGrid.offsetTop + lastGrid.clientHeight
     const pageOffset = window.pageYOffset + window.innerHeight
+    console.log(pageOffset);
     var bottomOffset = 20
     if(pageOffset > lastGridOffset - bottomOffset) this.loadMoreFaces() && this.loadAdverts()
   }
@@ -48,20 +49,25 @@ class App extends Component{
     // console.log(data);
     this.setState({
       ready: 'loaded',
-      faces: data, ...data,
+      faces: [...data] || data,
       scrolling: false
     })
   });}
 
   loadMoreFaces = () => {
+    // const {_page} = this.state
     this.setState(prevState=>({
       _page: prevState._page + 1,
+      scrolling: true
     }), this.loadFaces)
+    console.log('clicked')
   }
   loadAdverts = () => {
+    const {advert} = this.state
     this.setState({
-      advert: adsURL
+      advert: advert
     })
+    console.log()
   }
  
   render(){
@@ -75,13 +81,13 @@ class App extends Component{
             <Header />
             {/* <Ads /> */}
           </header>
-          <img src={this.state.loadAdverts} alt="ads" />
+          <img src={advert} alt="ads" />
           {faces.length ? '' : 'loading'}
           {ready=== 'loading' ? 'loading..' : ''}
           <Grid>
           {faces.map(faces=>(
 
-            <FontContainer key={faces.id} className="container">
+            <FontContainer key={faces.id} className="font-container">
               <div className="font-face">
                 <p className="face" style={{fontSize:faces.size}}>{faces.face}</p>
               </div>
@@ -95,6 +101,7 @@ class App extends Component{
             </FontContainer>
           ))}
           </Grid>
+          <a onClick={this.state.loadMoreFaces} href="#">LoadMore</a>
         </div>    
     );
   }

@@ -1,13 +1,21 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## File Structure
+
+The project file is divided into a client directory and a server directory
+
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
 
+on your terminal open two tabs. on one tab navigate to the server directory of the project and type "npm start" (without qoutes) and on the other tab navigate to the client directory and "npm start" too. Server runs on (http://localhost:3000)
+
+By default [Create React App] runs on (http://localhost:3000) too, however i have set it to 8000 in environment variables.
+
 Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
@@ -66,3 +74,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+### `Error: ENOSPC.`
+
+"ENOSPC" means that there is no space on the drive, so where do you save your file? or maybe /tmp is full? I got this error after working for a while on my Ubuntu Linux.
+
+However Typing "echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p" on my terminal solved the problem
+

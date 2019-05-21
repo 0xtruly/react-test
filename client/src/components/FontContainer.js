@@ -42,7 +42,7 @@ const FontContainerStyle = styled.div`
 
 const FontContainer = ({children}) =>(
     <FontContainerStyle className="font-container">
-    <div>
+    <div className="Wrapper">
         {children}
     </div>
     </FontContainerStyle>
