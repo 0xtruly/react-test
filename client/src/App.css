@@ -12,4 +12,55 @@
 .face{
   margin: 10px auto;
 }
+.spaced-text{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
 
+li{
+  height: 200px;
+  background: #1f2120;
+  color: #fff3f3;
+  border-radius: 5px;
+  border: 1px solid;
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  margin: 0 20px;
+  width: 300px;
+} 
+    
+div.fonts{
+    display: grid;
+    grid-template-rows: 35% 25% 40%;
+}
+
+.btn-round{
+    width: 80px;
+    height: 25px;
+    border-radius: 5px;
+    background: #174e17;;
+    color: #f2f2f2;
+    border: none;
+    outline: none;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 50px;
+}
+.btn{
+    display: flex;
+    top: 10rem;
+    position: relative;
+    right: 1rem;
+}
+ul.face-grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 30px;
+    padding: 50px 100px;
+    place-items: center;
+}
