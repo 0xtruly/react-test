@@ -34,12 +34,12 @@ class FacesList extends React.Component {
     e.preventDefault();
     const { scrolling, totalpages, _page } = this.state
     if (scrolling) return
-    if (_page == totalpages) return
+    if (_page ===totalpages) return
     const Lastli = document.querySelector('ul.face-grid > li:last-child')
     let LastliOffset = Lastli.clientHeight;
     let pageOffset = window.pageYOffset + window.innerHeight;
-    var bottomOffset = 600;
-    if (pageOffset > LastliOffset - bottomOffset) {this.loadMoreFaces(e)}
+    var bottomOffset = 50;
+    if ((pageOffset > LastliOffset) - bottomOffset) {this.loadMoreFaces(e)}
     // console.log(bottomOffset);
   }
 
@@ -75,7 +75,7 @@ class FacesList extends React.Component {
   render() {
 
     const { ready, faces, advert } = this.state;//destructring ready, faces and advert to this.State i.e get the the current state of these 3
-    const clicked = this.loadMoreFaces
+    // const clicked = this.loadMoreFaces
     console.log(this.state)
     return (
       <div className="App">
@@ -93,7 +93,7 @@ class FacesList extends React.Component {
             </li>
           ))}
         </ul>
-        <a onClick={clicked} href="">LoadMore</a>
+       
       </div>
     );
   }
